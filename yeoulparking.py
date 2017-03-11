@@ -105,9 +105,12 @@ def ping():
 
 @app.route('/parkings')
 def get_parkings():
-    latitude = convert_to_float(request.args.get('latitude'))
-    longitude = convert_to_float(request.args.get('longitude'))
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+
     if latitude is not None and longitude is not None:
+        latitude = convert_to_float(latitude)
+        longitude = convert_to_float(longitude)
         location = Location(latitude, longitude)
         results = get_parkings_by_distance(location)
     else:
