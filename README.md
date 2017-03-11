@@ -38,12 +38,16 @@ docker run -d \
 curl http://localhost:5000/ping
 ```
 
-`/parking` returns the available parking lots:
+`/parkings` returns the available parking lots:
 
 ```bash
-curl -d http://localhost:5000/parkings?latitude=0.0000&longitude=1.0000
+curl http://localhost:5000/parkings
 ```
 
 Additionally, `latitude` and `longitude`can be provided in the query string,
 in which case the distance to each parking will be returned,
-and the results will be ordered with the closest parkings first.
+and the results will be ordered with the closest parkings first:
+
+```bash
+curl http://localhost:5000/parkings?latitude=45.5253394&longitude=-73.574828
+```
